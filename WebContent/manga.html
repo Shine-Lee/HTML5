@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+
+
+		<style type="text/css">
+
+		.box {
+		    height: 520px;
+		    overflow: hidden;
+		}
+		.grab {
+		    cursor: -webkit-grab;
+		    cursor: -moz-grab;
+		    cursor: grab;
+		}
+		.grabbing {
+		    cursor: -webkit-grabbing;
+		    cursor: -moz-grabbing;
+		    cursor: grabbing;
+		}
+
+		</style>
+
+
+
+	</head>
+<body>
+
+<div class="box" align="center">
+
+<marquee direction="up" behavior="scroll" height="200px" >
+
+1111111111111111111111111111111111
+
+
+
+
+</marquee>
+
+<img src="http://ww1.sinaimg.cn/bmiddle/6f016cdfgw1enanqjvhijj20hi30swwu.jpg" class="grab">
+
+
+</div>
+
+
+
+		<script type="text/javascript">
+
+		if (window.addEventListener) {
+		    var box = document.querySelector(".box"), grab = document.querySelector(".box img");
+
+		    var store = { move: false };
+
+		    grab.addEventListener("mousedown", function (event) {
+
+
+		        this.className = "grabbing";
+		        store.move = true;
+		        store.startY = event.pageY + box.scrollTop;
+
+
+
+
+		        event.preventDefault();
+		    });
+
+		    document.addEventListener("mousemove", function(event) {
+
+
+
+		        store.y = event.pageY;
+		        if (store.move == true) box.scrollTop =  store.startY - store.y;
+
+		        event.preventDefault();
+		    });
+
+		    document.addEventListener("mouseup", function(event) {
+
+
+
+		        grab.className = "grab";
+		        store.move = false;
+		        event.preventDefault();
+		    });
+		}
+
+
+		</script>
+
+</body>
+</html>

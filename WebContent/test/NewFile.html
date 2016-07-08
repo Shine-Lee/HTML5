@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+
+<script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+
+/*  	$("#drag2").on("dragstart", function ($("#drag2").event) {
+
+		event.dataTransfer.setData("Text",event.target.id);
+
+	} );
+
+ 	$(" tbody tr td").on("drop", function (event) {
+
+		event.preventDefault();
+		var data=event.dataTransfer.getData("Text");
+		event.target.appendChild(document.getElementById(data));
+
+	} );
+
+ 	$(" tbody tr td").on("dragover", function (event) {
+
+		event.preventDefault();
+
+	} ); */
+
+
+
+	$("#drag2").on("dragstart", drag(event));
+	$(" tbody tr td").on("drop", drop(event));
+	$(" tbody tr td").on("dragover", allowDrop(event));
+
+
+
+});
+
+
+
+
+function allowDrop(ev){
+
+	ev.preventDefault();
+}
+
+function drag(ev){
+
+	ev.dataTransfer.setData("Text",ev.target.id);
+}
+
+function drop(ev){
+
+	ev.preventDefault();
+	var data=ev.dataTransfer.getData("Text");
+	ev.target.appendChild(document.getElementById(data));
+}
+
+
+
+</script>
+
+
+
+
+
+
+
+<style type="text/css">
+
+#backpack td{
+	width: 50px;
+	height: 50px;
+}
+
+.comment_table{
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+
+.comment_50{
+	width: 50px;
+	height: 50px;
+}
+
+.comment_80{
+	width: 80px;
+	height: 80px;
+}
+
+
+
+</style>
+
+
+</head>
+<body>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 400px; height: 200px; border: 2px solid #F00" >
+
+</div>
+
+<br/>
+
+<table border="1">
+
+	<tr>
+		<td class="comment_table" ></td>
+		<td class="comment_table" ></td>
+		<td class="comment_table" ></td>
+	</tr>
+
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+
+</table>
+
+<br/>
+
+<img id="drag1" src="img/400x200.gif" draggable="true" ondragstart="drag(event)" />
+
+
+<img id="drag2" src="img/200x200.jpg" draggable="true"/>
+
+<br/>
+
+<table id="backpack" border="1">
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+
+
+
+
+</body>
+</html>

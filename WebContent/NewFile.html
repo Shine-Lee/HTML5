@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+
+<style type="text/css">
+
+#backpack1 td{
+	width: 100px;
+	height: 100px;
+	text-align: center;
+	vertical-align: middle;
+	overflow:hidden
+}
+
+#backpack2 td{
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	vertical-align: middle;
+	overflow:hidden
+}
+
+img{
+	width: 95%;
+}
+
+#div1 {
+	counter-reset:chapter;
+}
+
+h2:before {
+
+	counter-increment: chapter;
+	content: counter(chapter) ".a "
+}
+
+a {
+	position: relative;
+	/* display: inline-block; */
+	outline: none;
+	/* text-decoration: none; */
+	color: #000;
+	font-size: 25px;
+	padding-left: 50px;
+}
+
+a:hover::before, a:hover::after { position: absolute; }
+a:hover::before { content: "\5B"; left: 30px;  }
+a:hover::after { content: "\5D"; right:  0px; }
+
+</style>
+
+
+</head>
+<body>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 400px; height: 200px; border: 2px solid #F00" >
+	<h2></h2>
+	<h2></h2>
+	<h2></h2>
+
+</div>
+
+<br/>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 400px; height: 200px; border: 2px solid #F00" >
+	<a href="#">
+		TEST1
+	</a>
+
+	<a href="#">
+		TEST2
+	</a>
+</div>
+
+<br/>
+
+<table id="backpack1" border="1">
+
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+
+</table>
+
+<br/>
+
+<table id="backpack2" border="1">
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+
+<br/>
+
+<div style="width: 400px; height: 200px;">
+	<img id="drag1" src="img/400x200.gif" draggable="true" ondragstart="drag(event)" />
+</div>
+
+<div style="width: 200px; height: 200px;">
+	<img id="drag2" src="img/200x200.jpg" draggable="true" ondragstart="drag(event)"/>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+	$("table td").each(function(){
+
+		$(this).bind({
+
+			drop:function(){
+				drop(event);
+			},
+
+			dragover:function(){
+				allowDrop(event);
+			},
+		});
+
+	});
+
+});
+
+function allowDrop(ev){
+	ev.preventDefault();
+}
+
+function drag(ev){
+
+	ev.dataTransfer.setData("Text",ev.target.id);
+}
+
+function drop(ev){
+	ev.preventDefault();
+	var data=ev.dataTransfer.getData("Text");
+	ev.target.appendChild(document.getElementById(data));
+}
+
+
+</script>
+
+</body>
+</html>
