@@ -9,24 +9,6 @@
 		<link rel="stylesheet" type="text/css" href="css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="css/bottom-area.css" />
 		<script src="js/modernizr.custom.js"></script>
-
-<style type="text/css">
-
-.imgTest{
-	font-size: 2em;
-	display: inline-block;
-	margin: 0.2em 0.1em;
-	padding-top: 2.25em;
-	width: 5.5em;
-	height: 5.5em;
-	border-radius: 4px;
-	background: #403E45;
-	color: #76737C;
-	text-align: center;
-}
-
-</style>
-
 	</head>
 	<body>
 		<div class="container">
@@ -44,16 +26,10 @@
 					</nav>
 				</header>
 				<div id="grid" class="grid clearfix">
-					<div class="grid__item"></div>
-
-
-					<div class="imgTest">
-						<img alt="aaa" src="img/square/bibby4.jpg" width="90%">
-					</div>
-
-
-					<div class="grid__item"><i></i></div>
-					<div class="grid__item"><i></i></div>
+					<div class="grid__item"><i class="fa fa-fw fa-image"></i></div>
+					<div class="grid__item"><i class="fa fa-fw fa-image"></i></div>
+					<div class="grid__item"><i class="fa fa-fw fa-image"></i></div>
+					<div class="grid__item"><i class="fa fa-fw fa-image"></i></div>
 					<div class="grid__item"><i class="fa fa-fw fa-image"></i></div>
 					<div class="grid__item"><i class="fa fa-fw fa-image"></i></div>
 					<div class="grid__item"><i class="fa fa-fw fa-image"></i></div>
@@ -63,7 +39,7 @@
 					<div class="grid__item"><i class="fa fa-fw fa-image"></i></div>
 					<div class="grid__item"><i class="fa fa-fw fa-image"></i></div>
 				</div>
-
+	
 			</div><!-- /content -->
 		</div><!-- /container -->
 		<div id="drop-area" class="drop-area">
@@ -84,18 +60,13 @@
 					droppableArr = [], dropAreaTimeout;
 
 				// initialize droppables
-
-				alert(document.querySelectorAll( '#drop-area .drop-area__item' ));
-
-				alert([].slice.call( document.querySelectorAll( '#drop-area .drop-area__item' )));
-
 				[].slice.call( document.querySelectorAll( '#drop-area .drop-area__item' )).forEach( function( el ) {
 					droppableArr.push( new Droppable( el, {
 						onDrop : function( instance, draggableEl ) {
 							// show checkmark inside the droppabe element
 							classie.add( instance.el, 'drop-feedback' );
 							clearTimeout( instance.checkmarkTimeout );
-							instance.checkmarkTimeout = setTimeout( function() {
+							instance.checkmarkTimeout = setTimeout( function() { 
 								classie.remove( instance.el, 'drop-feedback' );
 							}, 800 );
 							// ...

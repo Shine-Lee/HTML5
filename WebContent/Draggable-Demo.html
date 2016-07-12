@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+
+	<link rel="stylesheet" type="text/css" href="css/Draggable-Demo.css" />
+
+</head>
+<body>
+
+
+<body style="background: #2f3238;">
+
+
+<section>
+
+
+</section>
+		<div class="container">
+			<div class="content">
+
+				<div id="grid" class="grid clearfix">
+
+					<img id="img1" src="img/square/bibby4.jpg" class="grid__item" >
+					<img id="img2" src="img/square/Deathwish.jpg" class="grid__item" >
+					<img id="img3" src="img/square/Exit-World-4.jpg" class="grid__item" >
+					<img id="img4" src="img/square/pbj4.jpg" class="grid__item" >
+
+					<img src="img/square/bibby4.jpg" class="grid__item" >
+					<img src="img/square/bibby4.jpg" class="grid__item" >
+					<img src="img/square/bibby4.jpg" class="grid__item" >
+					<img src="img/square/bibby4.jpg" class="grid__item" >
+
+				</div>
+
+			</div><!-- /content -->
+		</div><!-- /container -->
+		<div id="drop-area" class="drop-area">
+			<div>
+				<div class="drop-area__item"><div class="dummy"></div></div>
+				<div class="drop-area__item"><div class="dummy"></div></div>
+				<div class="drop-area__item"><div class="dummy"></div></div>
+				<div class="drop-area__item"><div class="dummy"></div></div>
+			</div>
+		</div>
+
+
+
+
+		<script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+		<script>
+
+
+
+		$( "#grid .grid__item" ).draggable({
+			revert: "invalid",
+			containment: "html",
+
+			start: function() {
+				$(this).addClass("is-active");
+				$("#drop-area").addClass("show");
+	        },
+
+
+	        stop: function() {
+	        	$(this).removeClass("is-active");
+	        	$("#drop-area").removeClass("show");
+	        }
+
+		});
+
+
+		$( "#drop-area .drop-area__item" ).draggable({
+
+
+		});
+
+		</script>
+
+
+	</body>
+
+
+</body>
+</html>
